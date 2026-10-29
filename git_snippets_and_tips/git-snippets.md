@@ -13,3 +13,13 @@ vagrant@ubuntu-focal:/srv/www$ bin/cake migrations migrate
 Fix with this command
 **`git config --global core.autocrlf input`**
 ---
+
+### Check status of .gitignore file to troubleshoot add/remove errors
+```
+git status --short && echo '---' && git check-ignore -v .github/workflows/import-jobs.yml || true
+```
+
+### Check the status of a github workflow
+```
+echo '--- tracked ---' && git ls-files --stage .github/workflows/import-jobs.yml || true && echo '--- ignored ---' && git status --short --ignored --untracked-files=all .github .github/workflows .github/workflows/import-jobs.yml || true && echo '--- add test ---' && git add --dry-run .github/workflows/import-jobs.yml 2>&1 || true
+```
