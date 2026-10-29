@@ -3,6 +3,7 @@
 abstract class Account {
     protected float $balance = 0.0;
 
+    // In a real-world scenario, you might want to add more methods and properties here
     public function deposit(float $amount): void {
         if ($amount > 0) {
             $this->balance += $amount;
@@ -10,6 +11,7 @@ abstract class Account {
         }
     }
 
+    // Withdraw method is implemented in the base class, but can be overridden in subclasses if needed.
     public function withdraw(float $amount): void {
         if ($amount > 0 && $this->balance >= $amount) {
             $this->balance -= $amount;
@@ -65,9 +67,8 @@ function main(): void {
 
 main();
 
-// Example for proper condition over inheritance:
-<?php
-declare(strict_types=1);
+// Example for proper condition over inheritance
+// declare(strict_types=1); must be at the top of the file, before any other code or whitespace.
 
 // A shared contract that any weapon must fulfill. This is what lets
 // Character treat a Sword and a Bow interchangeably.
